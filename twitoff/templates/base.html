@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Twitoff - {{title}}</title>
+        <!-- we added a title here -->
+    </head>
+
+    <body>
+        <h1> Content goes here! </h1>
+        <p>Placeholder for content</p>
+
+        <ul>
+            {% for user in users %}
+            <li>{{ user.name }} </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
