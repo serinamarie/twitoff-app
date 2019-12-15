@@ -12,6 +12,7 @@ python-decouple = "*"
 flask = "*"
 flask-sqlalchemy = "*"
 scikit-learn = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
