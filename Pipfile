@@ -13,8 +13,6 @@ flask = "*"
 flask-sqlalchemy = "*"
 scikit-learn = "*"
 gunicorn = "*"
-psycopg2-binary = "*"
-dotenv = "*"
 python-dotenv = "*"
 psycopg2 = "*"
 
