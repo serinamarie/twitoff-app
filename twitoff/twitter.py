@@ -13,33 +13,6 @@ TWITTER = tweepy.API(TWITTER_AUTH)
 
 BASILICA = basilica.Connection(config('BASILICA_KEY'))
 
-# def add_or_update_user(username):
-#     '''Add or update a user and their Tweets, or else error'''
-#     try:
-#         twitter_user=TWITTER.get_user(username)
-#         db_user=(User.query.get(twitter_user.id) or
-#         User(id=twitter_user.id, name=username))
-#         DB.session.add(db_user)
-#         tweets=twitter_user.timeline(count=200,
-#                                         exclude_replies=True,
-#                                         include_rts=False,
-#                                         tweet_mode='extended',
-#                                         since_id=db_user.newest_tweet_id)
-#         if tweets:
-#             db_user.newest_tweet_id = tweets[0].id
-#         for tweet in tweets:
-#             #Calculate embedding on the full tweet
-#             embedding = BASILICA.embed_sentence(tweet.full_text, model='twitter')
-#             db_tweet = Tweet(id=tweet.id, text=tweet.full_text[:300],
-#             embedding=embedding)
-#             db_user.tweets.append(db_tweet)
-#             DB.session.add(db_tweet)
-#     except Exception as e:
-#         print(f'Error processing {username} : {e}'.format())
-#         raise e
-#     else:
-#         DB.session.commit()
-
 def add_or_update_user(name):
     """Add or update a user and their Tweets, or else error"""
     try:
@@ -63,3 +36,8 @@ def add_or_update_user(name):
         raise e
     else:
         DB.session.commit()
+
+def update_all_users():
+    """Update all Tweets for all Users in the User table."""
+    for user in User.query.all():
+        add_or_update_user(user.name)
