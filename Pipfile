@@ -16,6 +16,7 @@ gunicorn = "*"
 psycopg2-binary = "*"
 dotenv = "*"
 python-dotenv = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
